@@ -19,12 +19,12 @@
 
 /* CUSTOM PROPERTIES */
 :root {
-  --green-400: hsl(172, 67%, 45%);
-  --green-900: hsl(183, 100%, 15%);
-  --grey-500: hsl(186, 14%, 43%);
-  --grey-400: hsl(184, 14%, 56%);
-  --grey-200: hsl(185, 41%, 84%);
-  --grey-50: hsl(189, 47%, 97%);
+  --clr-green-400: hsl(172, 67%, 45%);
+  --clr-green-900: hsl(183, 100%, 15%);
+  --clr-grey-500: hsl(186, 14%, 43%);
+  --clr-grey-400: hsl(184, 14%, 56%);
+  --clr-grey-200: hsl(185, 41%, 84%);
+  --clr-grey-50: hsl(189, 47%, 97%);
   --clr-white: hsl(0, 100%, 100%);
 
   --ff-primary: 'Space Mono', monospace;
@@ -45,4 +45,38 @@
 
 body {
   font-family: var(--ff-primary);
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
 }
+
+/* BUTTONS */
+.btn {
+  padding: .25rem 1rem;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+}
+
+.btn--tip {
+  color: var(--clr-white);
+  background-color: var(--clr-green-900);
+  transition-property: background-color, color;
+  transition-duration: 200ms; 
+  transition-timing-function: ease-in-out;
+}
+
+.btn--tip.active {
+  background-color: var(--clr-green-400);
+  color: var(--clr-green-900);
+}
+
+.btn--tip:not(:disabled, .active):hover {
+  cursor: pointer;
+  background-color: var(--clr-grey-200);
+  color: var(--clr-green-900);
+}
+
+
+
+
