@@ -21,6 +21,7 @@
 :root {
   --clr-green-400: hsl(172, 67%, 45%);
   --clr-green-900: hsl(183, 100%, 15%);
+  --clr-green-800: hsl(183, 79%, 24%);
   --clr-grey-500: hsl(186, 14%, 43%);
   --clr-grey-400: hsl(184, 14%, 56%);
   --clr-grey-200: hsl(185, 41%, 84%);
@@ -56,6 +57,12 @@ body {
   border: 0;
   outline: 0;
   border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.btn--block {
+  display: block;
+  width: 100%;
 }
 
 .btn--tip {
@@ -66,12 +73,19 @@ body {
   transition-timing-function: ease-in-out;
 }
 
-.btn--tip.active {
+.btn--tip.active,
+.btn--reset {
   background-color: var(--clr-green-400);
   color: var(--clr-green-900);
 }
 
-.btn--tip:not(:disabled, .active):hover {
+.btn--reset:disabled {
+  background-color: var(--clr-green-800);
+  color: var(--clr-green-900);
+}
+
+.btn--tip:not(:disabled, .active):is(:hover, :focus-visible),
+.btn--reset:not(:disabled):is(:hover, :focus-visible) {
   cursor: pointer;
   background-color: var(--clr-grey-200);
   color: var(--clr-green-900);
