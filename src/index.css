@@ -166,6 +166,7 @@ input[type="number"]:not(:disabled) {
   font-size: .85rem;
   color: var(--clr-grey-500);
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: .25rem;
 }
 
@@ -173,16 +174,12 @@ input[type="number"]:not(:disabled) {
   grid-column: 1 / -1;
 }
 
-.form-group.person {
-  grid-template-columns: 1fr 1fr;
-}
-
 .form-group.percentage {
   grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
   column-gap: .75rem;
 }
 
-.form-group.percentage :first-child {
+.form-group:not(:has(.error)) :first-child {
   grid-column: 1 / -1;
 }
 
