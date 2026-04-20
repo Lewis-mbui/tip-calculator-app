@@ -1,5 +1,14 @@
+import FormField from "./FormField";
+import TipPercentageField from "./TipPercentageField";
+
 const TipForm = () => {
-  return <div>TipForm</div>;
+  return (
+    <form className="tip-form" action="">
+      <FormField />
+      <TipPercentageField />
+      <FormField />
+    </form>
+  );
 };
 
 export default TipForm;
