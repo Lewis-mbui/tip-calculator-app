@@ -1,16 +1,18 @@
+import TipButton from "./TipButton";
+
 interface Props {
   isDisabled: boolean;
 }
 
 const TipPercentageField = ({ isDisabled }: Props) => {
+  const percentages = [5, 10, 15, 25, 50];
+
   return (
     <div className="form-group percentage">
       <label htmlFor="custom-val">Select Tip %</label>
-      <button className="btn btn--block btn--tip">5%</button>
-      <button className="btn btn--block btn--tip">10%</button>
-      <button className="btn btn--block btn--tip">15%</button>
-      <button className="btn btn--block btn--tip">25%</button>
-      <button className="btn btn--block btn--tip">50%</button>
+      {percentages.map((val) => (
+        <TipButton key={val} value={val} />
+      ))}
       <input
         disabled={isDisabled}
         id="custom-val"

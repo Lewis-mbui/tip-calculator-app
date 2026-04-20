@@ -14,7 +14,7 @@ const TipForm = () => {
         isDisabled={false}
         error={null}
       />
-      <TipPercentageField />
+      <TipPercentageField isDisabled={false} />
       <FormField
         id="totalPeople"
         label="Number of People"
