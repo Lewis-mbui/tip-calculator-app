@@ -19,7 +19,7 @@ const TipForm = () => {
         id="totalPeople"
         label="Number of People"
         icon={personIcon}
-        isDisabled={true}
+        isDisabled={false}
         error={null}
       />
     </form>
