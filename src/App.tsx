@@ -18,6 +18,16 @@ function App() {
         </div>
       </div>
 
+      <div className="form-group percentage">
+        <label htmlFor="">Select Tip %</label>
+        <button className="btn btn--block btn--tip">5%</button>
+        <button className="btn btn--block btn--tip">10%</button>
+        <button className="btn btn--block btn--tip">15%</button>
+        <button className="btn btn--block btn--tip">25%</button>
+        <button className="btn btn--block btn--tip">50%</button>
+        <input placeholder="Custom" type="number" className="custom-input" />
+      </div>
+
       <div className="form-group person">
         <label htmlFor="">Number of people</label>
         <p className="error">Can't be zero</p>
