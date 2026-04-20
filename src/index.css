@@ -48,9 +48,13 @@
   font: inherit;
 }
 
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
 body {
   font-family: var(--ff-primary);
-  padding: 1rem;
   font-size: 1.5rem;
   font-weight: var(--fw-bold);
 }
@@ -189,6 +193,26 @@ input[type="number"]:not(:disabled) {
 .error {
   color: red;
   justify-self: end;
+}
+
+/* APP */
+.app {
+  display: grid;
+  min-height: 100vh;
+  background-color: var(--clr-grey-200);
+  align-content: center;
+  gap: 2rem;
+}
+
+.logo {
+  justify-self: center;
+}
+
+.container {
+  background-color: var(--clr-white);
+  border-radius: 1rem;
+  box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .25);
+  padding: 1rem;
 }
 
 

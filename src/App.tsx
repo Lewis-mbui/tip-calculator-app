@@ -1,10 +1,19 @@
 import dollarIcon from "../src/assets/images/icon-dollar.svg";
 import personIcon from "../src/assets/images/icon-person.svg";
+import logo from "../src/assets/images/logo.svg";
+
+import TipDisplay from "./components/TipDisplay";
+import TipForm from "./components/TipForm";
 
 function App() {
   return (
-    <>
-      <div className="form-group">
+    <div className="app">
+      <img className="logo" src={logo} alt="Splitter" />
+      <main className="container">
+        <TipForm />
+        <TipDisplay />
+      </main>
+      {/* <div className="form-group">
         <label htmlFor="">Bill</label>
         <div className="input-group">
           <img src={dollarIcon} alt="" />
@@ -41,7 +50,7 @@ function App() {
             className="primary-input"
           />
         </div>
-      </div>
+      </div> */}
       {/* <input
         disabled
         placeholder="Custom"
@@ -70,7 +79,7 @@ function App() {
           className="primary-input"
         />
       </div> */}
-    </>
+    </div>
   );
 }
 
