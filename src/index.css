@@ -20,8 +20,9 @@
 /* CUSTOM PROPERTIES */
 :root {
   --clr-green-400: hsl(172, 67%, 45%);
-  --clr-green-900: hsl(183, 100%, 15%);
   --clr-green-800: hsl(183, 79%, 24%);
+  --clr-green-850: hsla(183, 100%, 15%, .5);
+  --clr-green-900: hsl(183, 100%, 15%);
   --clr-grey-500: hsl(186, 14%, 43%);
   --clr-grey-400: hsl(184, 14%, 56%);
   --clr-grey-200: hsl(185, 41%, 84%);
@@ -81,7 +82,7 @@ body {
 
 .btn--reset:disabled {
   background-color: var(--clr-green-800);
-  color: var(--clr-green-900);
+  color: var(--clr-green-850);
 }
 
 .btn--tip:not(:disabled, .active):is(:hover, :focus-visible),
@@ -90,6 +91,62 @@ body {
   background-color: var(--clr-grey-200);
   color: var(--clr-green-900);
 }
+
+/* INPUTS */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+:where(input[type="number"]) {
+  appearance: textfield;
+  -moz-appearance: textfield;
+  text-align: right;
+  outline: 0;
+  border: 0;
+  color: var(--clr-green-900);
+  padding: .125rem 0;
+}
+
+input[type="number"]::placeholder {
+  color: var(--clr-grey-400);
+}
+
+input[type="number"]:not(:disabled) {
+  cursor: pointer;
+}
+
+.input-group {
+  padding: 0 .75rem;
+  display: flex;
+  align-items: center;
+  
+}
+
+.input-group input {
+  flex: 1;
+  background-color: transparent;
+}
+
+.custom-input[type="number"] {
+  padding: .125rem .75rem;
+}
+
+.custom-input,
+.input-group {
+  margin-top: .5rem;
+  /* outline: 1px solid red; */
+  background-color: var(--clr-grey-50);
+  border-radius: 4px;
+  border: 2px solid var(--clr-grey-50);
+}
+
+.custom-input:focus:not(:disabled),
+.input-group:focus-within:not(:disabled) {
+  border-color: var(--clr-green-400);
+} 
+
 
 
 

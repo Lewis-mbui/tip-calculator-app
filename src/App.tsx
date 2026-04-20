@@ -1,10 +1,36 @@
+import dollarIcon from "../src/assets/images/icon-dollar.svg";
+import personIcon from "../src/assets/images/icon-person.svg";
+
 function App() {
   return (
     <>
-      <button className="btn btn--tip btn--block">5%</button>
-      <button disabled className="btn btn--reset btn--block">
-        Reset
-      </button>
+      <input
+        placeholder="Custom"
+        className="custom-input"
+        type="number"
+        name=""
+        id=""
+      />
+      <div className="input-group">
+        <img src={dollarIcon} alt="" />
+        <input
+          placeholder="0"
+          type="number"
+          name=""
+          id=""
+          className="primary-input"
+        />
+      </div>
+      <div className="input-group">
+        <img src={personIcon} alt="" />
+        <input
+          placeholder="0"
+          type="number"
+          name=""
+          id=""
+          className="primary-input"
+        />
+      </div>
     </>
   );
 }
