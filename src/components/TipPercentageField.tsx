@@ -17,7 +17,8 @@ const TipPercentageField = ({ isDisabled }: Props) => {
         disabled={isDisabled}
         id="custom-val"
         placeholder="Custom"
-        type="number"
+        type="text"
+        inputMode="decimal"
         className="custom-input"
       />
     </div>

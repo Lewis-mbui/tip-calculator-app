@@ -1,27 +1,67 @@
+import type { FormValues } from "../App";
+
 interface Props {
   id: string;
   label: string;
   icon: string;
   error: string | undefined | null;
   isDisabled: boolean;
+  onChange: (value: string, id: string) => void;
+  values: FormValues;
 }
 
-const FormField = ({ label, icon, id, isDisabled, error }: Props) => {
+const FormField = ({
+  label,
+  icon,
+  id,
+  isDisabled,
+  error,
+  onChange,
+  values,
+}: Props) => {
   const errorClass = error ? "error" : "";
+
+  const inputVal = values[id as keyof FormValues] || "";
+
+  console.log(inputVal);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, id } = e.target;
+
+    // 1. Allow an empty string so users can backspace/delete
+    if (value === "") {
+      onChange("", id);
+      return;
+    }
+
+    // 2. Use a Regex that allows numbers and at most one decimal point
+    // This handles the "no non-numeric keys" requirement naturally
+    const regex = /^[0-9]*\.?[0-9]*$/;
+
+    if (regex.test(value)) {
+      onChange(value, id);
+    }
+  };
 
   return (
     <div className="form-group">
       <label htmlFor={id}>{label}</label>
+
       {error && <p className="error">{error}</p>}
+
       <div className={`input-group ${errorClass}`}>
         <img src={icon} alt="" />
+
         <input
+          value={inputVal}
+          onChange={handleChange}
           disabled={isDisabled}
           id={id}
           placeholder="0"
-          type="number"
+          type="text"
           name={id}
           className="primary-input"
+          inputMode="decimal"
         />
       </div>
     </div>

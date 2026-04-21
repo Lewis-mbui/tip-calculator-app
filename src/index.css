@@ -110,7 +110,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-:where(input[type="number"]) {
+:where(input[type="text"]) {
   appearance: textfield;
   -moz-appearance: textfield;
   text-align: right;
@@ -121,11 +121,11 @@ input::-webkit-inner-spin-button {
   font-size: 1.5rem;
 }
 
-input[type="number"]::placeholder {
+input[type="text"]::placeholder {
   color: var(--clr-grey-400);
 }
 
-input[type="number"]:not(:disabled) {
+input[type="text"]:not(:disabled) {
   cursor: pointer;
 }
 
@@ -142,7 +142,7 @@ input[type="number"]:not(:disabled) {
   background-color: transparent;
 }
 
-.custom-input[type="number"] {
+.custom-input[type="text"] {
   padding: var(--inputs-padding-v) .75rem;
 }
 
@@ -220,10 +220,6 @@ input[type="number"]:not(:disabled) {
   border-radius: 1rem;
   box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .25);
   padding: 1.5rem 1rem;
-}
-
-.container > * {
-  outline: 1px solid red;
 }
 
 @media (min-width: 37.5em) {
