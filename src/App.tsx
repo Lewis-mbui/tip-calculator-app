@@ -26,11 +26,10 @@ function App() {
 
     if (prop === "bill") {
       const bill = Number(values[prop]);
-
-      if (Number.isNaN(bill) || bill === 0) {
-        err[prop] = "Enter a valid number";
-      } else if (bill > 10000) {
+      if (bill > 10000) {
         err[prop] = "Should be <= 10,000";
+      } else if (bill < 0.01) {
+        err[prop] = "Should be >= 0.01";
       }
     }
 
@@ -38,29 +37,32 @@ function App() {
   }
 
   function handleChange(value: string, id: string) {
-    setValues({
+    const newVals = {
       ...values,
       [id]: value,
-    });
+    };
+    const err = validate(newVals, id as keyof FormValues);
+    setValues(newVals);
+    setErrors(err);
   }
 
   function handleBlur(id: string) {
     if (id === "bill") {
       const err = validate(values, id);
+      const bill = Number(values[id]);
 
-      if (err[id] === "Enter a valid number") {
-        setValues({ ...values, bill: null });
-      } else if (err[id] === "Should be <= 10,000") {
-        setErrors(err);
-      } else {
-        const bill = Number(values[id]).toString();
+      if (!bill || bill === 0) {
+        setValues({ ...values, [id]: null });
         setErrors({});
-        setValues({ ...values, bill });
+      } else {
+        setValues({ ...values, [id]: bill.toString() });
+        setErrors(err);
       }
     }
   }
 
-  console.log(values);
+  console.log("values: ", values);
+  console.log("errors: ", errors);
 
   return (
     <div className="app">

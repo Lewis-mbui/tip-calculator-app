@@ -14,7 +14,12 @@ interface Props {
 
 const TipForm = ({ onChange, onBlur, values, errors }: Props) => {
   return (
-    <form onSubmit={(e) => e.preventDefault()} className="tip-form" action="">
+    <form
+      autoComplete="off"
+      onSubmit={(e) => e.preventDefault()}
+      className="tip-form"
+      action=""
+    >
       <FormField
         id="bill"
         label="Bill"
