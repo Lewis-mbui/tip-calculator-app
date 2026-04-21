@@ -24,7 +24,7 @@ const TipDisplay = ({ values, errors, onReset }: Props) => {
     totalPeople &&
     !hasErrors
   ) {
-    tipPerPerson = (percentage / 100) * bill;
+    tipPerPerson = ((percentage / 100) * bill) / totalPeople;
     totalPerPerson = bill / totalPeople + tipPerPerson;
   }
 
@@ -38,7 +38,7 @@ const TipDisplay = ({ values, errors, onReset }: Props) => {
       </div>
       <div className="total">
         <p className="text">
-          Tip Amount <span className="per-person">/ person</span>
+          Total <span className="per-person">/ person</span>
         </p>
         <p className="amount">${totalPerPerson.toFixed(2)}</p>
       </div>
