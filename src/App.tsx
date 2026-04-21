@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../src/assets/images/logo.svg";
 
 import TipDisplay from "./components/TipDisplay";
@@ -20,6 +20,26 @@ function App() {
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
+  useEffect(() => {
+    const inputs = document.querySelectorAll("input");
+
+    const handleFocus = (e: FocusEvent) => {
+      const input = e.target as HTMLInputElement;
+      const length = input.value.length;
+      setTimeout(() => {
+        input.setSelectionRange(length, length);
+      }, 0);
+    };
+
+    inputs.forEach((input) => {
+      input.addEventListener("focus", handleFocus);
+    });
+
+    return () =>
+      inputs.forEach((input) =>
+        input.removeEventListener("focus", handleFocus),
+      );
+  }, []);
 
   function resetVals() {
     setValues({ bill: null, percentage: null, totalPeople: null });
