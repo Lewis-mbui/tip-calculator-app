@@ -4,10 +4,20 @@ import TipButton from "./TipButton";
 interface Props {
   values: FormValues;
   errors: FormErrors;
+  id: string;
+  onChange: (value: string, id: string) => void;
+  onBlur: (id: string) => void;
 }
 
-const TipPercentageField = ({ values, errors }: Props) => {
-  const percentages = [5, 10, 15, 25, 50];
+const TipPercentageField = ({
+  values,
+  errors,
+  id,
+  onChange,
+  onBlur,
+}: Props) => {
+  const percentages = ["5", "10", "15", "25", "50"];
+  const percentageVal = values.percentage || "";
   const bill = values.bill;
   const billError = errors.bill;
 
@@ -15,15 +25,37 @@ const TipPercentageField = ({ values, errors }: Props) => {
 
   console.log("Percentage disabled: ", isDisabled);
 
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { value, id } = e.target;
+
+    if (value === "") onChange("", id);
+
+    const regex = /^[0-9]*\.?[0-9]*$/;
+
+    if (regex.test(value)) {
+      onChange(value, id);
+    }
+  }
+
   return (
     <div className="form-group percentage">
-      <label htmlFor="custom-val">Select Tip %</label>
+      <label htmlFor={id}>Select Tip %</label>
       {percentages.map((val) => (
-        <TipButton isDisabled={isDisabled} key={val} value={val} />
+        <TipButton
+          onChange={onChange}
+          isDisabled={isDisabled}
+          key={val}
+          value={val}
+          id={id}
+          percentageVal={percentageVal}
+        />
       ))}
       <input
+        onBlur={() => onBlur(id)}
+        onChange={handleChange}
         disabled={isDisabled}
-        id="custom-val"
+        id={id}
+        value={percentageVal}
         placeholder="Custom"
         type="text"
         inputMode="decimal"

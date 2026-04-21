@@ -59,6 +59,21 @@ function App() {
         setErrors(err);
       }
     }
+
+    if (id === "percentage") {
+      const percentage = values[id];
+      if (percentage !== null) {
+        const percentageVal = parseFloat(percentage);
+
+        if (!percentageVal || percentageVal === 0) {
+          setValues({ ...values, [id]: null });
+        } else if (percentageVal < 5) {
+          setValues({ ...values, [id]: "5" });
+        } else if (percentageVal > 50) {
+          setValues({ ...values, [id]: "50" });
+        }
+      }
+    }
   }
 
   console.log("values: ", values);

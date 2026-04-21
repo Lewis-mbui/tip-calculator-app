@@ -30,7 +30,13 @@ const TipForm = ({ onChange, onBlur, values, errors }: Props) => {
         values={values}
         errors={errors}
       />
-      <TipPercentageField values={values} errors={errors} />
+      <TipPercentageField
+        onBlur={onBlur}
+        id="percentage"
+        onChange={onChange}
+        values={values}
+        errors={errors}
+      />
       <FormField
         id="totalPeople"
         label="Number of People"
