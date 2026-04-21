@@ -37,7 +37,8 @@
   --inputs-padding-h: .75rem;
   --inputs-padding-v: .125rem;
 
-  --fs-medium: 1rem;
+  --fs-medium: 0.85rem;
+  --fs-medium: clamp(0.85rem, -0.022727272727272818rem + 4.363636363636364vw, 1rem);
 }
 
 /* RESET STYLES */
@@ -197,6 +198,8 @@ input[type="text"]:not(:disabled) {
 .error {
   color: red;
   justify-self: end;
+  align-self: center;
+  /* font-size: .75rem; */
 }
 
 /* APP */
@@ -210,7 +213,9 @@ input[type="text"]:not(:disabled) {
   max-width: 440px;
   margin: 0 auto;
   gap: 2rem;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-bottom: 1rem;
 }
 
 .logo {
