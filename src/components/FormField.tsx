@@ -24,7 +24,7 @@ const FormField = ({
   const error = errors[id as keyof FormErrors];
 
   const errorClass = error ? "error" : "";
-  let isDisabled = false;
+  let isDisabled = id === "totalPeople" && !values.percentage ? true : false;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, id } = e.target;
@@ -35,12 +35,20 @@ const FormField = ({
       return;
     }
 
-    // 2. Use a Regex that allows numbers and at most one decimal point
-    // This handles the "no non-numeric keys" requirement naturally
-    const regex = /^[0-9]*\.?[0-9]*$/;
+    if (id === "bill") {
+      const regex = /^[0-9]*\.?[0-9]*$/;
 
-    if (regex.test(value)) {
-      onChange(value, id);
+      if (regex.test(value)) {
+        onChange(value, id);
+      }
+    }
+
+    if (id === "totalPeople") {
+      const regex = /^[0-9]*$/;
+
+      if (regex.test(value)) {
+        onChange(value, id);
+      }
     }
   };
 

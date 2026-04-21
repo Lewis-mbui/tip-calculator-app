@@ -33,6 +33,15 @@ function App() {
       }
     }
 
+    if (prop === "totalPeople") {
+      const totalPeople = Number(values[prop]);
+      if (totalPeople > 100) {
+        err[prop] = "Can't be > 100";
+      } else if (totalPeople <= 0) {
+        err[prop] = "Can't be zero";
+      }
+    }
+
     return err;
   }
 
