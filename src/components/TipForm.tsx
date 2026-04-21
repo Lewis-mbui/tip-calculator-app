@@ -1,4 +1,4 @@
-import type { FormValues } from "../App";
+import type { FormErrors, FormValues } from "../App";
 import dollarIcon from "../assets/images/icon-dollar.svg";
 import personIcon from "../assets/images/icon-person.svg";
 
@@ -7,10 +7,12 @@ import TipPercentageField from "./TipPercentageField";
 
 interface Props {
   onChange: (value: string, id: string) => void;
+  onBlur: (id: string) => void;
   values: FormValues;
+  errors: FormErrors;
 }
 
-const TipForm = ({ onChange, values }: Props) => {
+const TipForm = ({ onChange, onBlur, values, errors }: Props) => {
   return (
     <form onSubmit={(e) => e.preventDefault()} className="tip-form" action="">
       <FormField
@@ -18,9 +20,10 @@ const TipForm = ({ onChange, values }: Props) => {
         label="Bill"
         icon={dollarIcon}
         isDisabled={false}
-        error={null}
         onChange={onChange}
+        onBlur={onBlur}
         values={values}
+        errors={errors}
       />
       <TipPercentageField isDisabled={false} />
       <FormField
@@ -28,9 +31,10 @@ const TipForm = ({ onChange, values }: Props) => {
         label="Number of People"
         icon={personIcon}
         isDisabled={false}
-        error={null}
         onChange={onChange}
+        onBlur={onBlur}
         values={values}
+        errors={errors}
       />
     </form>
   );

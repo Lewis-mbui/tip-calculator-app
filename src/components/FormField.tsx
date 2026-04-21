@@ -1,13 +1,14 @@
-import type { FormValues } from "../App";
+import type { FormErrors, FormValues } from "../App";
 
 interface Props {
   id: string;
   label: string;
   icon: string;
-  error: string | undefined | null;
   isDisabled: boolean;
   onChange: (value: string, id: string) => void;
+  onBlur: (id: string) => void;
   values: FormValues;
+  errors: FormErrors;
 }
 
 const FormField = ({
@@ -15,13 +16,15 @@ const FormField = ({
   icon,
   id,
   isDisabled,
-  error,
   onChange,
+  onBlur,
   values,
+  errors,
 }: Props) => {
-  const errorClass = error ? "error" : "";
-
   const inputVal = values[id as keyof FormValues] || "";
+  const error = errors[id as keyof FormErrors];
+
+  const errorClass = error ? "error" : "";
 
   console.log(inputVal);
 
@@ -55,6 +58,7 @@ const FormField = ({
         <input
           value={inputVal}
           onChange={handleChange}
+          onBlur={() => onBlur(id)}
           disabled={isDisabled}
           id={id}
           placeholder="0"
