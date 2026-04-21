@@ -107,6 +107,14 @@ function App() {
         }
       }
     }
+
+    if (id === "totalPeople") {
+      const totalPeople = values[id];
+      if (totalPeople !== null) {
+        const val = Number(totalPeople).toString();
+        setValues({ ...values, [id]: val });
+      }
+    }
   }
 
   console.log("values: ", values);
