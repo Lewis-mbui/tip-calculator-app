@@ -23,8 +23,6 @@ const TipPercentageField = ({
 
   let isDisabled = billError || !bill ? true : false;
 
-  console.log("Percentage disabled: ", isDisabled);
-
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { value, id } = e.target;
 

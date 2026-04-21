@@ -14,12 +14,16 @@ const TipDisplay = ({ values, errors, onReset }: Props) => {
   const vals = Object.values(values);
   const hasSomeVals = vals.some((val) => val);
 
-  console.log("has values: ", hasSomeVals);
-
   let tipPerPerson = 0;
   let totalPerPerson = 0;
 
-  if (percentage && bill && totalPeople && !hasErrors) {
+  if (
+    percentage <= 50 &&
+    percentage >= 5 &&
+    bill &&
+    totalPeople &&
+    !hasErrors
+  ) {
     tipPerPerson = (percentage / 100) * bill;
     totalPerPerson = bill / totalPeople + tipPerPerson;
   }

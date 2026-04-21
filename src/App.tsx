@@ -78,7 +78,7 @@ function App() {
       if (percentage !== null) {
         const percentageVal = parseFloat(percentage);
 
-        if (!percentageVal || percentageVal === 0) {
+        if (!percentageVal) {
           setValues({ ...values, [id]: null });
         } else if (percentageVal < 5) {
           setValues({ ...values, [id]: "5" });
