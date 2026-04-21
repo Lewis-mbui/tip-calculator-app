@@ -99,7 +99,7 @@ function App() {
             values={values}
             errors={errors}
           />
-          <TipDisplay />
+          <TipDisplay errors={errors} values={values} />
         </main>
       </div>
     </div>
