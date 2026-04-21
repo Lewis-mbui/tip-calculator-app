@@ -21,6 +21,10 @@ function App() {
 
   const [errors, setErrors] = useState<FormErrors>({});
 
+  function resetVals() {
+    setValues({ bill: null, percentage: null, totalPeople: null });
+  }
+
   function validate(values: FormValues, prop: keyof FormValues) {
     const err: FormErrors = {};
 
@@ -99,7 +103,7 @@ function App() {
             values={values}
             errors={errors}
           />
-          <TipDisplay errors={errors} values={values} />
+          <TipDisplay onReset={resetVals} errors={errors} values={values} />
         </main>
       </div>
     </div>

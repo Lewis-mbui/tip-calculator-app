@@ -3,13 +3,18 @@ import type { FormErrors, FormValues } from "../App";
 interface Props {
   values: FormValues;
   errors: FormErrors;
+  onReset: () => void;
 }
 
-const TipDisplay = ({ values, errors }: Props) => {
+const TipDisplay = ({ values, errors, onReset }: Props) => {
   const percentage = Number(values.percentage);
   const bill = Number(values.bill);
   const totalPeople = Number(values.totalPeople);
   const hasErrors = Object.values(errors).length ? true : false;
+  const vals = Object.values(values);
+  const hasSomeVals = vals.some((val) => val);
+
+  console.log("has values: ", hasSomeVals);
 
   let tipPerPerson = 0;
   let totalPerPerson = 0;
@@ -33,7 +38,11 @@ const TipDisplay = ({ values, errors }: Props) => {
         </p>
         <p className="amount">${totalPerPerson.toFixed(2)}</p>
       </div>
-      <button disabled className="btn btn--block btn--reset">
+      <button
+        onClick={onReset}
+        disabled={!hasSomeVals}
+        className="btn btn--block btn--reset"
+      >
         Reset
       </button>
     </div>
