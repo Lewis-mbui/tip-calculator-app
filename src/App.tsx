@@ -30,7 +30,7 @@ function App() {
       if (Number.isNaN(bill) || bill === 0) {
         err[prop] = "Enter a valid number";
       } else if (bill > 10000) {
-        err[prop] = "Should be less than 10,000";
+        err[prop] = "Should be <= 10,000";
       }
     }
 
@@ -50,8 +50,12 @@ function App() {
 
       if (err[id] === "Enter a valid number") {
         setValues({ ...values, bill: null });
-      } else {
+      } else if (err[id] === "Should be <= 10,000") {
         setErrors(err);
+      } else {
+        const bill = Number(values[id]).toString();
+        setErrors({});
+        setValues({ ...values, bill });
       }
     }
   }

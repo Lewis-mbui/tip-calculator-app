@@ -25,7 +25,7 @@ const TipForm = ({ onChange, onBlur, values, errors }: Props) => {
         values={values}
         errors={errors}
       />
-      <TipPercentageField isDisabled={false} />
+      <TipPercentageField values={values} errors={errors} />
       <FormField
         id="totalPeople"
         label="Number of People"

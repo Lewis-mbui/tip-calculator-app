@@ -185,6 +185,11 @@ input[type="text"]:not(:disabled) {
   grid-column: 1 / -1;
 }
 
+.form-group:has(.error) .input-group {
+  /* background: #000; */
+  justify-self: stretch;
+}
+
 .form-group.percentage input {
   width: 100%;
 }

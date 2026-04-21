@@ -15,7 +15,6 @@ const FormField = ({
   label,
   icon,
   id,
-  isDisabled,
   onChange,
   onBlur,
   values,
@@ -25,8 +24,7 @@ const FormField = ({
   const error = errors[id as keyof FormErrors];
 
   const errorClass = error ? "error" : "";
-
-  console.log(inputVal);
+  let isDisabled = false;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, id } = e.target;
