@@ -117,8 +117,8 @@ function App() {
     }
   }
 
-  console.log("values: ", values);
-  console.log("errors: ", errors);
+  // console.log("values: ", values);
+  // console.log("errors: ", errors);
 
   return (
     <div className="app">

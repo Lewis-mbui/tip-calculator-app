@@ -11,8 +11,8 @@ const TipDisplay = ({ values, errors, onReset }: Props) => {
   const bill = Number(values.bill);
   const totalPeople = Number(values.totalPeople);
   const hasErrors = Object.values(errors).length ? true : false;
-  const vals = Object.values(values);
-  const hasSomeVals = vals.some((val) => val);
+  const hasMissingValues = Object.values(values)
+    .some(val => !val);
 
   let tipPerPerson = 0;
   let totalPerPerson = 0;
@@ -44,7 +44,7 @@ const TipDisplay = ({ values, errors, onReset }: Props) => {
       </div>
       <button
         onClick={onReset}
-        disabled={!hasSomeVals}
+        disabled={hasMissingValues}
         className="btn btn--block btn--reset"
       >
         Reset
